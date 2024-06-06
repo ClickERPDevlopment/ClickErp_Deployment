@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: click-iden-tity-deployment
+  namespace: click # Change the namespace name
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app: click-iden-tity
+  template:
+    metadata:
+      labels:
+        app: click-iden-tity
+    spec:
+      containers:
+        - name: click-iden-tity-container
+          image: 1almamun/identity:17
+          ports:
+            - containerPort: 80

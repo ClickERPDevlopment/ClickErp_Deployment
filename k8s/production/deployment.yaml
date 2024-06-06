@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: click-produc-tion-deployment
+  namespace: click # Change the namespace name
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app: click-produc-tion
+  template:
+    metadata:
+      labels:
+        app: click-produc-tion
+    spec:
+      containers:
+        - name: click-produc-tion-container
+          image: 1almamun/production:17
+          ports:
+            - containerPort: 80

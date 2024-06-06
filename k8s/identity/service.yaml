@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: click-iden-tity-service
+  namespace: click # Change the namespace name
+spec:
+  selector:
+    app: click-iden-tity
+  ports:
+    - name: port-8080
+      protocol: TCP
+      port: 8080
+      targetPort: 8080
+      nodePort: 51001
+  type: LoadBalancer

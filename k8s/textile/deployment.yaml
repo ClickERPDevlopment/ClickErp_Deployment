@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: click-tex-tile-deployment
+  namespace: click # Change the namespace name
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app: click-tex-tile
+  template:
+    metadata:
+      labels:
+        app: click-tex-tile
+    spec:
+      containers:
+        - name: click-tex-tile-container
+          image: 1almamun/textile:17
+          ports:
+            - containerPort: 80

@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: click-i-e-deployment
+  namespace: click # Change the namespace name
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app: click-i-e
+  template:
+    metadata:
+      labels:
+        app: click-i-e
+    spec:
+      containers:
+        - name: click-i-e-container
+          image: 1almamun/ie:17
+          ports:
+            - containerPort: 80
