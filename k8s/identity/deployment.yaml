@@ -15,6 +15,6 @@ spec:
     spec:
       containers:
         - name: click-iden-tity-container
-          image: 1almamun/identity:20
+          image: 1almamun/identity:21
           ports:
             - containerPort: 80
