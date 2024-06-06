@@ -19,9 +19,11 @@ pipeline {
         
         stage('checkout scm') {
             steps {
-                checkout scmGit(
-                    branches: [[name: '*/master']],
-                    userRemoteConfigs: [[url: 'https://github.com/ClickERPDevlopment/ClickErp_Deployment.git']])
+                withCredentials([gitUsernamePassword(credentialsId: 'github_uk', gitToolName: 'Default')]) {
+                    checkout scmGit(
+                        branches: [[name: '*/main']],
+                        userRemoteConfigs: [[url: 'https://github.com/ClickERPDevlopment/ClickErp_Deployment.git']])
+                }
             }
         }
         
@@ -79,12 +81,12 @@ pipeline {
                     sh """
                         git config --global user.name "MamunAG"
                         git config --global user.email "mamun166036@yahoo.com"
-                        git add k8s/deployment.yaml
+                        git add .
                         git commit -m "updated the deployment file"
                     """
                     
                     withCredentials([gitUsernamePassword(credentialsId: 'github_uk', gitToolName: 'Default')]) {
-                        sh "git push origin HEAD:master"
+                        sh "git push origin HEAD:main"
                     }
                     
                 }
