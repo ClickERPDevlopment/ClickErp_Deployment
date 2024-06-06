@@ -15,6 +15,6 @@ spec:
     spec:
       containers:
         - name: click-i-e-container
-          image: 1almamun/ie:33
+          image: 1almamun/ie:35
           ports:
             - containerPort: 80
