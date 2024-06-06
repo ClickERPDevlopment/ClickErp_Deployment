@@ -15,6 +15,6 @@ spec:
     spec:
       containers:
         - name: click-produc-tion-container
-          image: 1almamun/production:24
+          image: 1almamun/production:25
           ports:
             - containerPort: 80
