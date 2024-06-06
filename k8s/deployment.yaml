@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nextblazor-deployment
+  namespace: next # Change the namespace name
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: nextblazor
+  template:
+    metadata:
+      labels:
+        app: nextblazor
+    spec:
+      containers:
+        - name: nextblazor-container
+          image: 1almamun/aws_docker_example:17
+          ports:
+            - containerPort: 80

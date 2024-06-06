@@ -1,0 +1,54 @@
+pipeline {
+    agent any
+ 
+    environment {
+        APP_NAME = 'aws_docker_example'
+    }
+
+    stages {
+        
+        stage('Clear') {
+            steps {
+                deleteDir()
+            }
+        }
+        
+        stage('checkout scm') {
+            steps {
+                checkout scmGit(
+                    branches: [[name: '*/master']],
+                    userRemoteConfigs: [[url: 'https://github.com/MamunAG/AWS_Deployment.git']])
+            }
+        }
+        
+        stage('Updating kubernetes deploymnet file') {
+            steps{
+                script{
+                    sh """
+                        cat k8s/deployment.yaml
+                        sed -i 's/${APP_NAME}.*/${APP_NAME}:${IMAGE_TAG}/g' k8s/deployment.yaml
+                        cat k8s/deployment.yaml 
+                    """
+                }
+            }
+        }
+        
+        stage('Push the changed deployment file to Git') {
+            steps{
+                script{
+                    sh """
+                        git config --global user.name "MamunAG"
+                        git config --global user.email "mamun166036@yahoo.com"
+                        git add k8s/deployment.yaml
+                        git commit -m "updated the deployment file"
+                    """
+                    
+                    withCredentials([gitUsernamePassword(credentialsId: 'github_uk', gitToolName: 'Default')]) {
+                        sh "git push origin HEAD:master"
+                    }
+                    
+                }
+            }
+        }
+    }
+}
