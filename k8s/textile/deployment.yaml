@@ -15,6 +15,6 @@ spec:
     spec:
       containers:
         - name: click-tex-tile-container
-          image: 1almamun/textile:38
+          image: 1almamun/textile:39
           ports:
             - containerPort: 80
