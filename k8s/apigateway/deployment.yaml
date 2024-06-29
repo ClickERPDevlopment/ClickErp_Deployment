@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: click-apigateway
+  namespace: click # Change the namespace name
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app: click-apigateway
+  template:
+    metadata:
+      labels:
+        app: click-apigateway
+    spec:
+      containers:
+        - name: click-apigateway-container
+          image: 1almamun/apigateway:39
+          ports:
+            - containerPort: 80
