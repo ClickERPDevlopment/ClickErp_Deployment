@@ -5,7 +5,7 @@ pipeline {
         APP_NAME_apigateway = 'apigateway'
         APP_NAME_identity = 'identity'
         APP_NAME_textile = 'textile'
-        APP_NAME_production = 'productin'
+        APP_NAME_production = 'production'
         APP_NAME_ie = 'ie'
     }
 
@@ -23,6 +23,18 @@ pipeline {
                     checkout scmGit(
                         branches: [[name: '*/main']],
                         userRemoteConfigs: [[url: 'https://github.com/ClickERPDevlopment/ClickErp_Deployment.git']])
+                }
+            }
+        }
+        
+        stage('Updating apigateway kubernetes deploymnet file') {
+            steps{
+                script{
+                    sh """
+                        cat k8s/apigateway/deployment.yaml
+                        sed -i 's/${APP_NAME_apigateway}.*/${APP_NAME_apigateway}:${IMAGE_TAG}/g' k8s/apigateway/deployment.yaml
+                        cat k8s/apigateway/deployment.yaml 
+                    """
                 }
             }
         }
