@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: click-apigateway:41
+  name: click-apigateway:42
   namespace: click # Change the namespace name
 spec:
   replicas: 5
   selector:
     matchLabels:
-      app: click-apigateway:41
+      app: click-apigateway:42
   template:
     metadata:
       labels:
-        app: click-apigateway:41
+        app: click-apigateway:42
     spec:
       containers:
-        - name: click-apigateway:41
-          image: clickerp/apigateway:41
+        - name: click-apigateway:42
+          image: clickerp/apigateway:42
           ports:
             - containerPort: 80
