@@ -7,19 +7,9 @@ spec:
   selector:
     app: click-iden-tity
   ports:
-    - name: port-80
-      protocol: TCP
-      port: 80
-      targetPort: 80
-      nodePort: 30702
     - name: port-8080
       protocol: TCP
       port: 8080
       targetPort: 8080
       nodePort: 30601
-    - name: port-8081
-      protocol: TCP
-      port: 8081
-      targetPort: 8081
-      nodePort: 30701
   type: LoadBalancer
