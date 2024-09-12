@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: redis-stack
+  namespace: redis-stack
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: redis-stack
+  template:
+    metadata:
+      labels:
+        app: redis-stack
+    spec:
+      containers:
+        - name: redis
+          image: redis/redis-stack:latest
+          ports:
+            - containerPort: 6379
+          volumeMounts:
+            - mountPath: /data
+              name: redis-storage
+          resources:
+            limits:
+              memory: "512Mi"
+              cpu: "500m"
+      volumes:
+        - name: redis-storage
+          persistentVolumeClaim:
+            claimName: redis-pvc
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: redis-stack
+  namespace: redis-stack
+spec:
+  ports:
+    - port: 6379
+  selector:
+    app: redis-stack
+  type: ClusterIP
