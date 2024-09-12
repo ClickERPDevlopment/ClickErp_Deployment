@@ -27,6 +27,7 @@ metadata:
 spec:
   ports:
     - port: 8001
+      nodePort: 30703
   selector:
     app: redis-insight
   type: ClusterIP

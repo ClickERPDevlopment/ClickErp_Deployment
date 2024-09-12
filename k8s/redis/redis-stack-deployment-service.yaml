@@ -38,6 +38,7 @@ metadata:
 spec:
   ports:
     - port: 6379
+      nodePort: 30704
   selector:
     app: redis-stack
   type: ClusterIP
