@@ -1,33 +1,52 @@
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: redis-insight
-  namespace: redis-stack
-spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: redis-insight
-  template:
-    metadata:
-      labels:
-        app: redis-insight
-    spec:
-      containers:
-        - name: redis-insight
-          image: redis/redisinsight:latest
-          ports:
-            - containerPort: 8001
----
+# Redis Insight service with name 'redisinsight-service'
 apiVersion: v1
 kind: Service
 metadata:
   name: redis-insight
-  namespace: redis-stack
+  namespace: redis-stack      # name should not be 'redisinsight'
+                                   # since the service creates
+                                   # environment variables that
+                                   # conflicts with redisinsight
+                                   # application's environment
+                                   # variables `RI_APP_HOST` and
+                                   # `RI_APP_PORT`
 spec:
+  type: LoadBalancer
   ports:
     - port: 8001
+      targetPort: 5540
       nodePort: 30703
   selector:
     app: redis-insight
-  type: LoadBalancer
+---
+# Redis Insight deployment with name 'redisinsight'
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: redis-insight #deployment name
+  labels:
+    app: redis-insight #deployment label
+spec:
+  replicas: 1 #a single replica pod
+  selector:
+    matchLabels:
+      app: redis-insight #which pods is the deployment managing, as defined by the pod template
+  template: #pod template
+    metadata:
+      labels:
+        app: redis-insight #label for pod/s
+    spec:
+      containers:
+
+      - name:  redis-insight #Container name (DNS_LABEL, unique)
+        image: redis/redisinsight:latest #repo/image
+        imagePullPolicy: IfNotPresent #Installs the latest Redis Insight version
+        volumeMounts:
+        - name: redis-insight #Pod volumes to mount into the container's filesystem. Cannot be updated.
+          mountPath: /data
+        ports:
+        - containerPort: 5540 #exposed container port and protocol
+          protocol: TCP
+      volumes:
+      - name: redis-insight
+        emptyDir: {} # node-ephemeral volume https://kubernetes.io/docs/concepts/storage/volumes/#emptydir
