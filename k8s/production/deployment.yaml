@@ -4,7 +4,7 @@ metadata:
   name: click-produc-tion-deployment
   namespace: click # Change the namespace name
 spec:
-  replicas: 5
+  replicas: 3
   selector:
     matchLabels:
       app: click-produc-tion
