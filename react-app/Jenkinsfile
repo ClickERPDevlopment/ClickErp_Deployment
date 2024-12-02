@@ -4,7 +4,7 @@ pipeline {
     environment {
         APP_NAME_react_ap = 'react-app'
     }
-//
+
     stages {
         
         stage('Clear') {
@@ -27,9 +27,9 @@ pipeline {
             steps{
                 script{
                     sh """
-                        cat react-app/k8s/react-app/deployment.yaml
-                        sed -i 's/${APP_NAME_react_ap}.*/${APP_NAME_react_ap}:${IMAGE_TAG}/g' react-app/k8s/react-app/deployment.yaml
-                        cat react-app/k8s/react-app/deployment.yaml 
+                        cat react-app/k8s/deployment.yaml
+                        sed -i 's/${APP_NAME_react_ap}.*/${APP_NAME_react_ap}:${IMAGE_TAG}/g' react-app/k8s/deployment.yaml
+                        cat react-app/k8s/deployment.yaml 
                     """
                 }
             }
