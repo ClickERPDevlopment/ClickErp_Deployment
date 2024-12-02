@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: reactapp-deployment
+  namespace: click # Change the namespace name
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: reactapp
+  template:
+    metadata:
+      labels:
+        app: reactapp
+    spec:
+      containers:
+        - name: reactapp
+          image: react-app:latest
+          ports:
+            - containerPort: 3000
+          env:
+            - name: REACT_APP_CLIENT_NAME
+              valueFrom:
+                secretKeyRef:
+                  name: my-secret
+                  key: CLIENT_NAME
