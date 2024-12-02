@@ -4,7 +4,7 @@ pipeline {
     environment {
         APP_NAME_react_ap = 'react-app'
     }
-
+//
     stages {
         
         stage('Clear') {
