@@ -27,9 +27,9 @@ pipeline {
             steps{
                 script{
                     sh """
-                        cat k8s/apigateway/deployment.yaml
+                        cat ../k8s/react-app/deployment.yaml
                         sed -i 's/${APP_NAME_react_ap}.*/${APP_NAME_react_ap}:${IMAGE_TAG}/g' ../k8s/react-app/deployment.yaml
-                        cat k8s/apigateway/deployment.yaml 
+                        cat ../k8s/react-app/deployment.yaml 
                     """
                 }
             }
