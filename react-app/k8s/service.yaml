@@ -10,6 +10,6 @@ spec:
     app: reactapp
   ports:
     - port: 80
-      targetPort: 80 # Replace with your app's container port if different
+      targetPort: 3000 # Replace with your app's container port if different
       nodePort: 30530
   type: LoadBalancer
