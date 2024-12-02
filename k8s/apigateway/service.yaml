@@ -5,7 +5,7 @@ metadata:
   namespace: click # Change the namespace name
 spec:
   selector:
-    app: click-apigateway
+    app: click-api-gateway-dep
   ports:
     - name: port-8080
       protocol: TCP
