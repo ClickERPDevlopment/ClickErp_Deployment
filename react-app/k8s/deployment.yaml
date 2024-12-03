@@ -24,3 +24,5 @@ spec:
                 secretKeyRef:
                   name: my-secret
                   key: CLIENT_NAME
+            - name: NODE_ENV
+              value: "production"
