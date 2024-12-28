@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: click-i-e-container
-          image: clickerp/ie:49
+          image: clickerp/ie:52
           ports:
             - containerPort: 80
           envFrom:
