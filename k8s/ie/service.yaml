@@ -11,5 +11,5 @@ spec:
       protocol: TCP
       port: 8080
       targetPort: 8080
-      nodePort: 30501
+      nodePort: 3050100000000000000
   type: LoadBalancer
