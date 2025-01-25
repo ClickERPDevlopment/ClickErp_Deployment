@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: reactapp
-          image: clickerp/react-app:26
+          image: clickerp/react-app:24
           ports:
             - containerPort: 3000
           env:
@@ -24,7 +24,7 @@ spec:
                 secretKeyRef:
                   name: my-secret
                   key: CLIENT_NAME
-            - name: NODE_ENV
+            - name: REACT_APP_LINUX_NODE_ENV
               value: "production"
             - name: REACT_APP_LINUX_NODE_ENV
               value: "production"
