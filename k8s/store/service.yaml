@@ -1,11 +1,11 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: click-produc-tion-service
+  name: click-store-service
   namespace: click # Change the namespace name
 spec:
   selector:
-    app: click-produc-tion
+    app: click-store
   ports:
     - name: port-8080
       protocol: TCP

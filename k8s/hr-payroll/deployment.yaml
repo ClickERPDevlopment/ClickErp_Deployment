@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: click-produc-tion-deployment
+  name: click-hr-payroll-deployment
   namespace: click # Change the namespace name
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: click-produc-tion
+      app: click-hr-payroll
   template:
     metadata:
       labels:
-        app: click-produc-tion
+        app: click-hr-payroll
     spec:
       containers:
-        - name: click-produc-tion-container
+        - name: click-hr-payroll-container
           image: clickerp/production:24
           ports:
             - containerPort: 80
