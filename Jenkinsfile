@@ -94,7 +94,7 @@ pipeline {
                 script{
                     sh """
                         cat k8s/hr-payroll/deployment.yaml
-                        sed -i 's|${APP_NAME_hr_payroll}:[0-9]\+|${APP_NAME_hr_payroll}:${IMAGE_TAG}|g' k8s/hr-payroll/deployment.yaml
+                        sed -i 's|${APP_NAME_hr_payroll}:[0-9]\\+|${APP_NAME_hr_payroll}:${IMAGE_TAG}|g' k8s/hr-payroll/deployment.yaml
                         cat k8s/hr-payroll/deployment.yaml 
                     """
                 }
