@@ -26,5 +26,3 @@ spec:
                   key: CLIENT_NAME
             - name: REACT_APP_LINUX_NODE_ENV
               value: "production"
-            - name: REACT_APP_LINUX_NODE_ENV
-              value: "production"
