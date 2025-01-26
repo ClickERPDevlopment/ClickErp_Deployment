@@ -7,6 +7,8 @@ pipeline {
         APP_NAME_textile = 'textile'
         APP_NAME_production = 'production'
         APP_NAME_ie = 'ie'
+        APP_NAME_hr_payroll = 'clickerp/hr-payroll'
+        APP_NAME_store = 'clickerp/store'
     }
 
     stages {
@@ -63,17 +65,17 @@ pipeline {
             }
         }
         
-        stage('Updating ie kubernetes deploymnet file') {
-            steps{
-                script{
-                    sh """
-                        cat k8s/ie/deployment.yaml
-                        sed -i 's/${APP_NAME_ie}.*/${APP_NAME_ie}:${IMAGE_TAG}/g' k8s/ie/deployment.yaml
-                        cat k8s/ie/deployment.yaml 
-                    """
-                }
-            }
-        }
+        // stage('Updating ie kubernetes deploymnet file') {
+        //     steps{
+        //         script{
+        //             sh """
+        //                 cat k8s/ie/deployment.yaml
+        //                 sed -i 's/${APP_NAME_ie}.*/${APP_NAME_ie}:${IMAGE_TAG}/g' k8s/ie/deployment.yaml
+        //                 cat k8s/ie/deployment.yaml 
+        //             """
+        //         }
+        //     }
+        // }
         
         stage('Updating production kubernetes deploymnet file') {
             steps{
@@ -82,6 +84,30 @@ pipeline {
                         cat k8s/production/deployment.yaml
                         sed -i 's/${APP_NAME_production}.*/${APP_NAME_production}:${IMAGE_TAG}/g' k8s/production/deployment.yaml
                         cat k8s/production/deployment.yaml 
+                    """
+                }
+            }
+        }
+        
+        stage('Updating hr-payroll kubernetes deploymnet file') {
+            steps{
+                script{
+                    sh """
+                        cat k8s/hr-payroll/deployment.yaml
+                        sed -i 's|${APP_NAME_hr_payroll}:[0-9]\+|${APP_NAME_hr_payroll}:${IMAGE_TAG}|g' k8s/hr-payroll/deployment.yaml
+                        cat k8s/hr-payroll/deployment.yaml 
+                    """
+                }
+            }
+        }
+        
+        stage('Updating store kubernetes deploymnet file') {
+            steps{
+                script{
+                    sh """
+                        cat k8s/store/deployment.yaml
+                        sed -i 's|${APP_NAME_store}:[0-9]\+|${APP_NAME_store}:${IMAGE_TAG}|g' k8s/store/deployment.yaml
+                        cat k8s/store/deployment.yaml 
                     """
                 }
             }
