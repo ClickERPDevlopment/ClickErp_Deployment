@@ -106,7 +106,7 @@ pipeline {
                 script{
                     sh """
                         cat k8s/store/deployment.yaml
-                        sed -i 's|${APP_NAME_store}:[0-9]\+|${APP_NAME_store}:${IMAGE_TAG}|g' k8s/store/deployment.yaml
+                        sed -i 's|${APP_NAME_store}:[0-9]\\+|${APP_NAME_store}:${IMAGE_TAG}|g' k8s/store/deployment.yaml
                         cat k8s/store/deployment.yaml 
                     """
                 }
