@@ -5,7 +5,7 @@ pipeline {
         APP_NAME_apigateway = 'apigateway'
         APP_NAME_identity = 'identity'
         APP_NAME_textile = 'textile'
-        APP_NAME_production = 'production'
+        APP_NAME_production = 'clickerp/production'
         APP_NAME_ie = 'ie'
         APP_NAME_hr_payroll = 'clickerp/hr-payroll'
         APP_NAME_store = 'clickerp/store'
@@ -82,7 +82,7 @@ pipeline {
                 script{
                     sh """
                         cat k8s/production/deployment.yaml
-                        sed -i 's/${APP_NAME_production}.*/${APP_NAME_production}:${IMAGE_TAG}/g' k8s/production/deployment.yaml
+                        sed -i 's|${APP_NAME_production}:[0-9]\\+|${APP_NAME_production}:${IMAGE_TAG}|g' k8s/production/deployment.yaml
                         cat k8s/production/deployment.yaml 
                     """
                 }
