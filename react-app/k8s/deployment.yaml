@@ -26,3 +26,5 @@ spec:
                   key: CLIENT_NAME
             - name: VITE_APP_LINUX_NODE_ENV
               value: "production"
+            - name: NODE_ENV
+              value: "production"
