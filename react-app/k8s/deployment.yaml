@@ -17,7 +17,7 @@ spec:
         - name: reactapp
           image: clickerp/react-app:51
           ports:
-            - containerPort: 4173
+            - containerPort: 3000
           env:
             - name: VITE_APP_CLIENT_NAME
               valueFrom:
