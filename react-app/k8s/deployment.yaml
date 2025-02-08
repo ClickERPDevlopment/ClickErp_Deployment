@@ -19,10 +19,10 @@ spec:
           ports:
             - containerPort: 3000
           env:
-            - name: REACT_APP_CLIENT_NAME
+            - name: VITE_APP_CLIENT_NAME
               valueFrom:
                 secretKeyRef:
                   name: my-secret
                   key: CLIENT_NAME
-            - name: REACT_APP_LINUX_NODE_ENV
+            - name: VITE_APP_LINUX_NODE_ENV
               value: "production"
