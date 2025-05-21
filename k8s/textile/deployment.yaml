@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: click-tex-tile-container
-          image: clickerp/textile:134
+          image: clickerp/textile:135
           ports:
             - containerPort: 80
           envFrom:
