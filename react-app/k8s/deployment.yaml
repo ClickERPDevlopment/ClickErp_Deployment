@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: reactapp
-          image: clickerp/react-app:401
+          image: clickerp/react-app:402
           ports:
             - containerPort: 3000
           env:
