@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: click-hr-payroll-container
-          image: clickerp/hr-payroll:594
+          image: clickerp/hr-payroll:595
           ports:
             - containerPort: 80
           envFrom:
