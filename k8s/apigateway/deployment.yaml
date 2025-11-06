@@ -15,6 +15,6 @@ spec:
     spec:
       containers:
         - name: click-api-gateway-dep
-          image: clickerp/apigateway:769
+          image: clickerp/apigateway:770
           ports:
             - containerPort: 80
