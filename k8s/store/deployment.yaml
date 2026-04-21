@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: click-store-container
-          image: clickerp/store:1638
+          image: clickerp/store:1639
           ports:
             - containerPort: 80
           envFrom:
