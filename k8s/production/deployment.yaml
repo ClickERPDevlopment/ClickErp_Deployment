@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: click-produc-tion-container
-          image: clickerp/production:1890
+          image: clickerp/production:1891
           ports:
             - containerPort: 80
           envFrom:
