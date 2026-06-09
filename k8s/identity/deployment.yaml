@@ -15,6 +15,6 @@ spec:
     spec:
       containers:
         - name: click-iden-tity-container
-          image: clickerp/identity:2055
+          image: clickerp/identity:2056
           ports:
             - containerPort: 8081
